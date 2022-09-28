@@ -1,17 +1,22 @@
-import random
+import random, os, codecs
 
-print("Voulez vous miner ? [Oui/Non]")
+print("Voulez vous miner ?")
 rep1 = input()
-if rep1 == "Oui":
-    
+if rep1 == "":
+
     charbonT = (random.randrange(1, 3))
-    charbon = str(charbonT)
-    print("Vous avez miner", charbon, "charbon.")
+    fd = "DB1.txt"
+    file = open(fd, 'r')
+    charbonS = file.read()
+    charbon = int(charbonT) + int(charbonS)
+    charbon = str(charbon)
+    print("Vous avez miner", int(charbonT), "charbon.")
 
     with open('DB1.txt', 'w') as writer:
         writer.write(charbon)
-        print("DB1 Set to:")
-        print(charbon)
+        os.close(2)
+
+    os.system("main.py")
 
 else:
-    exit
+  os.system("main.py")
